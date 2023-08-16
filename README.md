@@ -4,7 +4,7 @@
 
 # Ejecutar en desarrollo
 
-1. Tener instalado NodeJS,NMP,YARN,DOCKER, DOCKER COMPOSE
+1. Tener instalado NodeJS,NMP,YARN,DOCKER, DOCKER COMPOSE, DOCKER DESKTOP
 
 2. Tener Nest CLI instalado windows cmd como administrador
 
@@ -12,22 +12,28 @@
 npm i -g @nestjs/cli
 ```
 
-3. Clonar el repositorio
+3. Tener Nest CLI instalado linux, mac
 
-4. Ejecutar
+```
+sudo npm i -g @nestjs/cli
+```
+
+4. Clonar el repositorio
+
+5. Ejecutar
 
 ```
 cd nombre-proyeto
 yarn install
 ```
 
-5. Levantar la base de datos
+6. Levantar la base de datos
 
 ```
 docker compose up -d
 ```
 
-6. bajar la base de datos
+7. bajar la base de datos
 
 ```
 docker compose down
@@ -36,6 +42,7 @@ docker compose down
 ## Stack usado
 
 - MongoDB
-- Nest
+- NestJS
 - Docker
 - Docker compose
+- Docker Desktop

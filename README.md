@@ -4,7 +4,7 @@
 
 # Ejecutar en desarrollo
 
-1. Tener instalado NodeJS,NMP,YARN,DOCKER, DOCKER COMPOSE, DOCKER DESKTOP
+1. Tener instalado NodeJS, npm, yarn, docker, docker compose, docker-desktop
 
 2. Tener Nest CLI instalado windows cmd como administrador
 

@@ -9,6 +9,7 @@ import { isValidObjectId, Model } from 'mongoose';
 import { Pokemon } from './entities/pokemon.entity';
 
 import { CreatePokemonDto, UpdatePokemonDto } from './dto';
+import { PaginationDto } from 'src/common/dto/pagination.dto';
 
 @Injectable()
 export class PokemonService {
@@ -28,27 +29,39 @@ export class PokemonService {
     }
   }
 
-  async findAll() {
-    return await this.pokemonModel.find();
+  findAll(paginationDto: PaginationDto) {
+    const { limit = 10, offset = 0 } = paginationDto;
+
+    return this.pokemonModel
+      .find()
+      .limit(limit)
+      .skip(offset)
+      .sort({
+        no: 1,
+      })
+      .select('-__v');
+    // .select('-createdAt');// Para no enviar la propiedad
   }
 
   async findOne(term: string) {
     let pokemon: Pokemon;
 
     if (!isNaN(+term)) {
-      pokemon = await this.pokemonModel.findOne({ no: term });
+      pokemon = await this.pokemonModel.findOne({ no: term }).select('-__v');
     }
 
     // MongoID
     if (!pokemon && isValidObjectId(term)) {
-      pokemon = await this.pokemonModel.findById(term);
+      pokemon = await this.pokemonModel.findById(term).select('-__v');
     }
 
     // Name
     if (!pokemon) {
-      pokemon = await this.pokemonModel.findOne({
-        name: term.toLowerCase().trim(),
-      });
+      pokemon = await this.pokemonModel
+        .findOne({
+          name: term.toLowerCase().trim(),
+        })
+        .select('-__v');
     }
 
     if (!pokemon)
@@ -65,7 +78,7 @@ export class PokemonService {
       updatePokemonDto.name = updatePokemonDto.name.toLowerCase().trim();
 
     try {
-      await pokemon.updateOne(updatePokemonDto);
+      await pokemon.updateOne(updatePokemonDto).select('-__v');
       return { ...pokemon.toJSON(), ...updatePokemonDto };
     } catch (error) {
       this.handleExceptions(error);
@@ -77,7 +90,9 @@ export class PokemonService {
     // await pokemon.deleteOne();
     // return { id };
     // const result = await this.pokemonModel.findByIdAndDelete( id );
-    const { deletedCount } = await this.pokemonModel.deleteOne({ _id: id });
+    const { deletedCount } = await this.pokemonModel
+      .deleteOne({ _id: id })
+      .select('-__v');
     if (deletedCount === 0)
       throw new BadRequestException(`Pokemon with id "${id}" not found`);
 

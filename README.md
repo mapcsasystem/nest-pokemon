@@ -33,7 +33,13 @@ yarn install
 docker compose up -d
 ```
 
-7. bajar la base de datos
+7. Reconstruir la base de datos ejecutar con get
+
+```
+www.localhost:3000/api/v2/seed
+```
+
+8. bajar la base de datos
 
 ```
 docker compose down

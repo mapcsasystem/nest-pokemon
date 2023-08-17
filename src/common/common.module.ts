@@ -1,5 +1,8 @@
 import { Module } from '@nestjs/common';
-import { ParseMongoIdPipe } from './pipes/parse-mongo-id/parse-mongo-id.pipe';
+import { AxiosAdapter } from './adapters/axios.adapter';
 
-@Module({})
+@Module({
+  providers: [AxiosAdapter],
+  exports: [AxiosAdapter],
+})
 export class CommonModule {}

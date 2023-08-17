@@ -14,11 +14,15 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class PokemonService {
+  private port: number;
   constructor(
     @InjectModel(Pokemon.name)
     private readonly pokemonModel: Model<Pokemon>,
     private readonly configService: ConfigService,
-  ) {}
+  ) {
+    this.port = +configService.get('PORT');
+    console.log(this.port);
+  }
 
   async create(createPokemonDto: CreatePokemonDto) {
     createPokemonDto.name = createPokemonDto.name.toLocaleLowerCase();

@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Pokemon } from './entities/pokemon.entity';
 import { CreatePokemonDto, UpdatePokemonDto } from './dto';
@@ -17,10 +21,12 @@ export class PokemonService {
       const pokemon = await this.pokemonModel.create(createPokemonDto);
       return pokemon;
     } catch (error) {
-      console.log(error);
       if (error.code === 11000) {
         throw new BadRequestException(`Pokemon exits ${JSON.stringify(error)}`);
       }
+      throw new InternalServerErrorException(
+        `Create Pokemon ${JSON.stringify(error)}`,
+      );
     }
   }
 

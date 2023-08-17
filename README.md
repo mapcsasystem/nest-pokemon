@@ -33,7 +33,9 @@ yarn install
 docker compose up -d
 ```
 
-7. Levantar app en la raíz del proyecto
+7. crear un archivo en la raíz **.env** en base a **.env.example**
+
+8. Levantar app en la raíz del proyecto
 
 ```
 npm run start:dev
@@ -45,13 +47,13 @@ npm run start:dev
 yarn start:dev
 ```
 
-8. Reconstruir la base de datos ejecutar con get
+9. Reconstruir la base de datos ejecutar con get
 
 ```
 www.localhost:3000/api/v2/seed
 ```
 
-9. bajar la base de datos
+10. bajar la base de datos
 
 ```
 docker compose down

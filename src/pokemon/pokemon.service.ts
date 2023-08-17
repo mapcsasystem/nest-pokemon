@@ -20,7 +20,7 @@ export class PokemonService {
     private readonly pokemonModel: Model<Pokemon>,
     private readonly configService: ConfigService,
   ) {
-    this.port = +configService.get('PORT');
+    this.port = configService.get<number>('PORT');
     console.log(this.port);
   }
 

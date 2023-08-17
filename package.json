@@ -1,10 +1,10 @@
 {
   "name": "pokedex-nest",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Aplicacion crud de pokemosn",
+  "author": "Miguel Angel Pérez Contreras",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

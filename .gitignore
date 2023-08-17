@@ -35,3 +35,7 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 mongo/
+.env
+.env.dev
+.env.stag
+.env.prod

@@ -66,3 +66,23 @@ docker compose down
 - Docker
 - Docker compose
 - Docker Desktop
+
+# Dockenizar proyecto
+
+#### Production Build
+
+1. Crear el archivo `.env.prod`
+2. Llenar las variables de entorno de prod
+3. Crear la nueva imagen **Build**
+
+```
+docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build
+```
+
+4. Despues de hacer el **build** si se baja la imagen se puede ejecutar
+
+```
+docker-compose -f docker-compose.prod.yaml --env-file .env.prod up
+```
+
+5. si se borra la imagen iniciar en el paso 4

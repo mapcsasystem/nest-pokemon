@@ -85,4 +85,4 @@ docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build
 docker-compose -f docker-compose.prod.yaml --env-file .env.prod up
 ```
 
-5. si se borra la imagen iniciar en el paso 4
+5. si se borra la imagen iniciar en el paso 3
